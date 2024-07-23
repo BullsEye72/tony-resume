@@ -1,48 +1,12 @@
 import { sql } from "@vercel/postgres";
-
-function formatPeriod(start_date: Date, end_date: Date): string {
-  const frenchMonthsAbrv = [
-    "Janv.",
-    "Fév.",
-    "Mars",
-    "Avr.",
-    "Mai",
-    "Juin",
-    "Juil.",
-    "Août",
-    "Sept.",
-    "Oct.",
-    "Nov.",
-    "Déc.",
-  ];
-  let periodString = "";
-
-  const startYear = start_date.getFullYear();
-  const endYear = end_date?.getFullYear();
-
-  const startMonth = start_date.getMonth();
-  const endMonth = end_date?.getMonth();
-
-  const startDay = start_date.getDate();
-  const endDay = end_date?.getDate();
-
-  if (end_date === null) {
-    return `Depuis ${startMonth}-${startYear}`;
-  }
-
-  if (endMonth == startMonth && endDay == startDay) {
-    return `${startYear}-${endYear}`;
-  }
-
-  return `${startMonth}-${startYear} à ${endMonth}-${endYear}`;
-}
+import { formatPeriod } from "./actions";
 
 export default async function FormationTable() {
-  const { rows } = await sql`SELECT * FROM "resume-experience" ORDER BY "order" ASC`;
+  const { rows } = await sql`SELECT * FROM "resume-experience" ORDER BY "order" ASC LIMIT 0`;
 
   return (
     <div className="m-6">
-      <div className="lgc-blue-bg font-bold text-center w-full">Expériences</div>
+      <div className="lgc-blue-bg font-bold text-center w-full">Formation</div>
 
       {rows.map((row) => (
         <div
