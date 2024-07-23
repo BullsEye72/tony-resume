@@ -1,6 +1,6 @@
 "use server";
 
-export async function formatPeriod(start_date: Date, end_date: Date): string {
+export async function formatPeriod(start_date: Date, end_date: Date): Promise<string> {
   const frenchMonthsAbrv = [
     "Janv.",
     "Fév.",
