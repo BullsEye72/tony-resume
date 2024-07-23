@@ -1,6 +1,21 @@
+import ContactInfo from "../Header/ContactInfo";
+import Objective from "../Header/Objective";
+import ProfilePicture from "../Header/ProfilePicture";
+import Separator from "./Separator";
+
 export default function Header() {
-  return <div className="flex flex-col p-0 w-full h-40 ">
-    <div className="grow">Header</div>
-  <div className="bg-blue-400 w-full h-16">
-    Separator</div></div>;
+  return (
+    <>
+      <div className="flex w-full px-10 pt-8 mb-2">
+        <HeaderElement width="w-2/5" element={<ContactInfo />} />
+        <HeaderElement width="w-2/5" element={<Objective />} />
+        <HeaderElement width="w-1/4" element={<ProfilePicture />} />
+      </div>
+      <Separator />
+    </>
+  );
+}
+
+function HeaderElement({ width, element }: { width: string; element: React.ReactNode }) {
+  return <div className={`${width} p-0 mx-2  flex items-center justify-center`}>{element}</div>;
 }

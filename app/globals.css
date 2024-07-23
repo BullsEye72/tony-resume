@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.writing-mode-vertical-rl {
+  writing-mode: vertical-rl;
+  text-align: justify;
+}
+
+.lgc-blue-bg {
+  background-color: #b8cce4;
+}
+
+.lgc-green-bg {
+  background-color: #eaf1dd;
+}
+
+.lgc-lightblue-bg {
+  background-color: #daeef3;
+}
+
+.lgc-debug-border,
+.lgc-debug-border-red {
+  border: 1px solid red;
+}
+
+.lgc-debug-border-green {
+  border: 1px solid green;
+}
