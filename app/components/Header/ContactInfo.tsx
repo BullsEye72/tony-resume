@@ -2,6 +2,7 @@ import { sql } from "@vercel/postgres";
 import InfoContainer from "./InfoContainer";
 import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
 import { faPhone, faAddressBook, faCalendarDays, faEnvelope, faCar } from "@fortawesome/free-solid-svg-icons";
+import { Suspense } from "react";
 
 export default function ContactInfo() {
   async function GetInfo() {
@@ -56,5 +57,9 @@ export default function ContactInfo() {
 }
 
 function Icon({ icon }: { icon: FontAwesomeIconProps["icon"] }) {
-  return <FontAwesomeIcon icon={icon} size="xs" className="mr-2" />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <FontAwesomeIcon icon={icon} size="xs" className="mr-2" />
+    </Suspense>
+  );
 }

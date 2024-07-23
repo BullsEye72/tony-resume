@@ -1,3 +1,9 @@
+import XPTable from "../Content/XPTable";
+
 export default function Content() {
-  return <div className="grow">Content</div>;
+  return (
+    <div className="">
+      <XPTable />
+    </div>
+  );
 }
