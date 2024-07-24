@@ -16,17 +16,21 @@ export async function formatPeriod(start_date: Date, end_date: Date): Promise<st
     "Déc.",
   ];
 
-  const startYear = start_date.getFullYear();
+  const startYear = start_date?.getFullYear();
   const endYear = end_date?.getFullYear();
 
-  const startMonth = start_date.getMonth();
+  const startMonth = start_date?.getMonth();
   const endMonth = end_date?.getMonth();
 
-  const startDay = start_date.getDate();
+  const startDay = start_date?.getDate();
   const endDay = end_date?.getDate();
 
   if (end_date === null) {
     return `Depuis ${frenchMonthsAbrv[startMonth]} ${startYear}`;
+  }
+
+  if (start_date === null) {
+    return `${endYear}`;
   }
 
   if (endMonth == startMonth && endDay == startDay) {
