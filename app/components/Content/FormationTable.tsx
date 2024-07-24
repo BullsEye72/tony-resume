@@ -1,6 +1,10 @@
 import { sql } from "@vercel/postgres";
 import { formatPeriod } from "./actions";
 
+/**
+ * Renders a table of formations.
+ * @returns The JSX element representing the formations table.
+ */
 export default async function FormationTable() {
   const { rows } = await sql`SELECT * FROM "resume-formation" ORDER BY "order" ASC`;
 
@@ -11,7 +15,7 @@ export default async function FormationTable() {
       {rows.map((row) => (
         <div
           key={row.id}
-          className={`w-full sm:grid sm:grid-cols-[180px_auto] border-dashed border-t-[1px] border-gray-700 ${
+          className={`text-sm w-full sm:grid sm:grid-cols-[180px_auto] border-dashed border-t-[1px] border-gray-700 ${
             row.priority ? "lgc-lightblue-bg" : ""
           }`}
         >

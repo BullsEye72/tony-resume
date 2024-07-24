@@ -1,7 +1,13 @@
 import { sql } from "@vercel/postgres";
 import { formatPeriod } from "./actions";
+import TableCell from "./TableCell";
 
+/**
+ * Renders a table of experiences.
+ * @returns The JSX element representing the experience table.
+ */
 export default async function XPTable() {
+  //Fetch the rows from the vercel postgres database
   const { rows } = await sql`SELECT * FROM "resume-experience" ORDER BY "order" ASC`;
 
   return (
@@ -15,18 +21,28 @@ export default async function XPTable() {
             row.priority ? "lgc-lightblue-bg" : ""
           }`}
         >
-          <div className="border-dashed sm:border-r-[1px] border-gray-700">
-            {formatPeriod(row.start_date, row.end_date)}
-            <br />
-            <span className="italic">{row.company}</span>
-          </div>
-          <div className="border-dashed sm:border-r-[1px] border-gray-700">
-            <span className="font-bold">{row.role}</span>
-            <ul className="list-inside list-disc">
-              {row.tasks && row.tasks.map((task: string, index: number) => <li key={index}>{task}</li>)}
-            </ul>
-          </div>
-          <div className={`${row.priority ? "font-bold" : ""}`}>{row.tech && row.tech.join(", ")}</div>
+          <TableCell
+            content={
+              <>
+                {formatPeriod(row.start_date, row.end_date)}
+                <br />
+                <span className="italic">{row.company}</span>
+              </>
+            }
+          />
+
+          <TableCell
+            content={
+              <>
+                <span className="font-bold">{row.role}</span>
+                <ul className="list-inside list-disc">
+                  {row.tasks && row.tasks.map((task: string, index: number) => <li key={index}>{task}</li>)}
+                </ul>
+              </>
+            }
+          />
+
+          <TableCell content={<>{row.tech && row.tech.join(", ")}</>} />
         </div>
       ))}
     </div>
