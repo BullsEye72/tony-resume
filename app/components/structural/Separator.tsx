@@ -3,7 +3,7 @@ import Objective from "../Header/Objective";
 import React from "react";
 
 export default function Separator() {
-  const commonStyle = "pl-8 w-full h-16 items-center pl-2 " + chakraPetch.className;
+  const commonStyle = "pl-8 w-full h-16 items-center pl-2 flex items-center " + chakraPetch.className;
 
   return (
     <>

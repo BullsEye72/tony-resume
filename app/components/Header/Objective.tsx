@@ -1,5 +1,3 @@
-import InfoContainer from "./InfoContainer";
-
 export default function Objective() {
   const data = {
     objective:
@@ -7,8 +5,8 @@ export default function Objective() {
   };
 
   return (
-    <>
+    <p>
       <span className="underline font-bold">Projet :</span> {data.objective}
-    </>
+    </p>
   );
 }
