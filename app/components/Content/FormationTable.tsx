@@ -29,7 +29,7 @@ export default async function FormationTable() {
               </span>
             )}
           </div>
-          <div className="border-dashed sm:border-r-[1px] border-gray-700">
+          <div className="border-dashed sm:border-r-[1px] border-gray-700 px-2">
             <span className="font-bold">{row.titre}</span>
             <ul className="list-inside list-disc">
               {row.items && row.items.map((item: string, index: number) => <li key={index}>{item}</li>)}
