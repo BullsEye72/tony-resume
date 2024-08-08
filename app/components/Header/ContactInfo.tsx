@@ -61,7 +61,7 @@ export default function ContactInfo() {
           </a>
         </li>
 
-        <li>
+        <li className="print:hidden">
           <Icon icon={faLinkedin} />
           <a
             href={info.linkedin}

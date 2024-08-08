@@ -19,7 +19,7 @@ export default async function FormationTable() {
             row.priority ? "lgc-lightblue-bg" : ""
           }`}
         >
-          <div className="border-dashed sm:border-r-[1px] border-gray-700">
+          <div className="border-dashed sm:border-r-[1px] border-gray-700 px-2">
             {formatPeriod(row.start_date, row.end_date)}
             <br />
             <span className="font-bold">{row.school_name}</span>
