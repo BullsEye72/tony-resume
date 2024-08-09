@@ -4,7 +4,8 @@ import TableCell from "./TableCell";
 
 interface Task {
   title: string;
-  detail?: string; // detail is optional
+  detail?: string;
+  tech?: string;
 }
 
 /**
@@ -22,7 +23,7 @@ export default async function XPTable() {
       {rows.map((row, rowIndex) => (
         <div
           key={row.id}
-          className={`text-sm w-full sm:grid sm:grid-cols-[180px_auto_200px] ${row.priority ? "lgc-lightblue-bg" : ""}`}
+          className={`text-sm w-full sm:grid sm:grid-cols-[180px_auto] ${row.priority ? "lgc-lightblue-bg" : ""}`}
         >
           <TableCell
             isLastColumn={false}
@@ -37,11 +38,11 @@ export default async function XPTable() {
           />
 
           <TableCell
-            isLastColumn={false}
+            isLastColumn={true}
             isLastRow={rowIndex === rows.length - 1}
             content={
               <>
-                <span className="font-bold">{row.role}</span>
+                <span className="font-bold text-lg">{row.role}</span>
                 <dl className="list-inside list-disc">
                   {row.tasks &&
                     row.tasks.map((task: Task, index: number) => (
@@ -50,6 +51,7 @@ export default async function XPTable() {
                           {task.title}
                         </dt>
                         {task.detail && <dd className="italic pl-2">{task.detail}</dd>}
+                        {task.tech && <dd className="font-semibold italic pl-2">{task.tech}</dd>}
                         <br />
                       </>
                     ))}
@@ -58,11 +60,11 @@ export default async function XPTable() {
             }
           />
 
-          <TableCell
+          {/* <TableCell
             isLastColumn={true}
             isLastRow={rowIndex === rows.length - 1}
             content={<>{row.tech && row.tech.join(", ")}</>}
-          />
+          /> */}
         </div>
       ))}
     </div>
