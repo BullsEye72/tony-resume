@@ -2,6 +2,11 @@ import { sql } from "@vercel/postgres";
 import { formatPeriod } from "./actions";
 import TableCell from "./TableCell";
 
+interface Task {
+  title: string;
+  detail?: string; // detail is optional
+}
+
 /**
  * Renders a table of experiences.
  * @returns The JSX element representing the experience table.
@@ -39,7 +44,7 @@ export default async function XPTable() {
                 <span className="font-bold">{row.role}</span>
                 <dl className="list-inside list-disc">
                   {row.tasks &&
-                    row.tasks.map((task, index) => (
+                    row.tasks.map((task: Task, index: number) => (
                       <>
                         <dt key={index} className="font-semibold pl-2">
                           {task.title}
